@@ -28,20 +28,19 @@ const App: React.FC = () => {
   }, [])
 
   // Change cell to different cell on click
-  function handleClick(i: number, j: number) {
+  function handleClick(i: number, j: number): void {
     const newGrid = gridArr.slice();
     newGrid[i][j] = cell;
     setGridArr(newGrid);
   }
 
   // Change multiple cells while mouse is held down and moving over them
-  function handleMouseOver(i: number, j: number) {
+  function handleMouseOver(i: number, j: number): void {
     if (isMouseDown) {
       const newGrid = [...gridArr];
       newGrid[i][j] = cell;
       setGridArr(newGrid);
     }
-    console.log(gridArr[i][j])
   }
 
   return (
@@ -52,7 +51,7 @@ const App: React.FC = () => {
         <button onClick={() => setCell(3)}>Wall</button>
         <button onClick={() => setCell(4)}>End</button>
       </div>
-      <div className="grid" onMouseDown={() => setIsMouseDown(true)} onMouseUp={() => setIsMouseDown(false)}>
+      <div className="grid" onMouseDown={() => setIsMouseDown(true)} onMouseUp={() => setIsMouseDown(false)} onDragStart={(e) => e.preventDefault()}>
         {gridArr.map((col: number[], i: number) => {
           return <div className="col" key={i}>
               {col.map((cellValue: number, j: number) => {
