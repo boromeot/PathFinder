@@ -1,25 +1,32 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import './App.css';
 
 const App: React.FC = () => {
   // Grid constants
-  const ROWS: number = 25;
+  const ROWS: number = 30;
   const COLS: number = 75;
 
   const [gridArr, setGridArr] = useState(new Array());
 
-
   useEffect(() => {
     // Create 2d matrix that the search alogrithms will work on
     const tempArr: Array<Array<Number>> = new Array();
-    for (let i = 0; i < ROWS; i++) {
-      tempArr.push(new Array(COLS).fill(0));
+    for (let i = 0; i < COLS; i++) {
+      tempArr.push(new Array(ROWS).fill(0));
     }
     setGridArr(tempArr);
   }, [])
 
   return (
-    <div>hello</div>
+    <div className="grid">
+      {gridArr.map((col) => {
+        return <div className="col">
+            {col.map(() => {
+              return <div className="cell"></div>
+            })}
+        </div>
+      })}
+    </div>
   )
 };
 

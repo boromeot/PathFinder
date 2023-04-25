@@ -1,0 +1,10 @@
+.grid {
+  display: flex;
+}
+
+.cell {
+  width: 22px;
+  height: 22px;
+  border: #ADD8E6 1px solid;
+  background-color: whitesmoke;
+}
